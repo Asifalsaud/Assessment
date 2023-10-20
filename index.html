@@ -19,15 +19,16 @@
             background-color: darkblue;
             color: white;
         }
+        
         .add-to-cart-button {
-            background-color: green;
-            color: white;
-        }
+    background-color: green;
+    color: white;
+}
 
-        .remove-from-cart-button {
-            background-color: red;
-            color: white;
-        }         
+.remove-from-cart-button {
+    background-color: red;
+    color: white;
+}
 
        
 h2{
@@ -400,7 +401,7 @@ const discountTable = [
                 <td>${item.discount}%</td>
                 <td>${discountedPrice.toFixed(2)}</td>
                 <td>${item.vendor}</td>
-                <td><button onclick="removeFromCart(${index})">Remove</button></td>
+                <td><button class="remove-from-cart-button" onclick="removeFromCart(${index})">Remove</button></td>
             `;
     });
 
@@ -435,7 +436,8 @@ const discountTable = [
                 <td>${item.price.toFixed(2)}</td>
                 <td>${tags}</td>
                 <td>${item.vendor}</td>
-                <td><button onclick="addToCart(${item.id})">Add to Cart</button></td>
+                <td><button class="add-to-cart-button" onclick="addToCart(${item.id})">Add to Cart</button></td>
+
             `;
             productTableElement.appendChild(row);
         });
