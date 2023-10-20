@@ -123,7 +123,7 @@ const discountTable = [
                 "price": 12.5,
                 "tags": ["TRADE A", "ice"],
                 "vendor": "Vendor 5",
-                "discount": 5
+                "discount": 3
             },
             {
                 "id": 2,
@@ -131,7 +131,7 @@ const discountTable = [
                 "price": 42.5,
                 "tags": ["TRADE B", "ice2"],
                 "vendor": "Vendor 4",
-                "discount": 10
+                "discount": 0
             },
             {
                 "id": 3,
@@ -243,7 +243,7 @@ const discountTable = [
                 "price": 57,
                 "tags": ["TRADE A", "test"],
                 "vendor": "Vendor 1",
-                "discount": 29
+                "discount": 13
             },
             {
                 "id": 17,
@@ -267,7 +267,7 @@ const discountTable = [
                 "price": 112.5,
                 "tags": ["TRADE B", "test"],
                 "vendor": "Vendor 4",
-                "discount": 0
+                "discount": 11
             },
             {
                 "id": 20,
@@ -283,7 +283,7 @@ const discountTable = [
                 "price": 52,
                 "tags": ["TRADE A", "test"],
                 "vendor": "Vendor 3",
-                "discount": 12
+                "discount": 2
             },
             {
                 "id": 22,
@@ -315,7 +315,7 @@ const discountTable = [
                 "price": 67,
                 "tags": ["TRADE D", "test"],
                 "vendor": "Vendor 5",
-                "discount": 0
+                "discount": 3
             },
             {
                 "id": 26,
@@ -331,7 +331,7 @@ const discountTable = [
                 "price": 42.5,
                 "tags": ["TRADE B", "test"],
                 "vendor": "Vendor 2",
-                "discount": 2
+                "discount": 0
             }
         ];
 
@@ -373,7 +373,9 @@ const discountTable = [
             updateCart();
         }
 
-        function updateCart() {
+       //update cart
+       
+       function updateCart() {
     const cartTable = document.getElementById('cart');
     const totalElement = document.getElementById('total');
     let total = 0;
@@ -389,18 +391,17 @@ const discountTable = [
 
     cart.forEach((item, index) => {
         const discountedPrice = applyDiscount(item);
-        const discountPercentage = ((item.price - discountedPrice) / item.price) * 100;
         total += discountedPrice;
 
         cartTable.innerHTML += `
             <tr>
                 <td>${item.name}</td>
                 <td>${item.price.toFixed(2)}</td>
-                <td>${discountPercentage.toFixed(2)}%</td>
+                <td>${item.discount}%</td>
                 <td>${discountedPrice.toFixed(2)}</td>
                 <td>${item.vendor}</td>
                 <td><button onclick="removeFromCart(${index})">Remove</button></td>
-            </tr>`;
+            `;
     });
 
     totalElement.textContent = `${total.toFixed(2)}`;
@@ -447,3 +448,4 @@ const discountTable = [
 </body>
 
 </html>
+
